@@ -19,7 +19,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        r-version: ['3.6.3', '4.1.1']
+        r-version: ['4.1.1']
 
     steps:
       - uses: actions/checkout@v2
@@ -39,5 +39,9 @@ jobs:
         run: Rscript -e 'install.packages("dplyr", dependencies = TRUE)'
       - name: Install stopwords package
         run: Rscript -e 'install.packages("stopwords", dependencies = TRUE)'
+      - name: Install rtweet package
+        run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
+      - name: Install RPostgreSQL package
+        run: Rscript -e 'install.packages("RPostgreSQL", dependencies = TRUE)'
       - name: Create and post tweet
         run: Rscript Test_ScrapingData.R
