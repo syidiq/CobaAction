@@ -10,7 +10,7 @@ name: AutoRun
 
 on:
   schedule:
-  - cron: "* * * * *"
+  - cron: "0 10 * * *"
 
 jobs:
   build:
