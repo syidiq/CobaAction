@@ -32,6 +32,17 @@ jobs:
           install.packages(c("remotes", "rcmdcheck"))
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
-      - name: Check
-        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
-        shell: Rscript {0}
+      - name: Install tidyverse package
+        run: Rscript -e 'install.packages("tidyverse", dependencies = TRUE)'
+      - name: Install leaps package
+        run: Rscript -e 'install.packages("leaps", dependencies = TRUE)'
+      - name: Install skimr package
+        run: Rscript -e 'install.packages("skimr", dependencies = TRUE)'
+      - name: Install ggplot2 package
+        run: Rscript -e 'install.packages("ggplot2", dependencies = TRUE)'
+      - name: Install dplyr package
+        run: Rscript -e 'install.packages("dplyr", dependencies = TRUE)'
+      - name: Install stopwords package
+        run: Rscript -e 'install.packages("stopwords", dependencies = TRUE)'
+      - name: Create and post tweet
+        run: Rscript Test_ScrapingData.R
